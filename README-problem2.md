@@ -26,6 +26,21 @@ for all `i < j` such that `|xi - xj| <= k`.
 - **Space Complexity:** O(1) — only a few variables are used; no extra arrays needed.
 
 ---
+### Optimization Considered
+
+The problem can be optimized to **O(n) time complexity** using a **monotonic deque** (or a priority queue), leveraging the fact that:
+
+yi + yj + |xi - xj| = (yi - xi) + (yj + xj)
+
+
+
+* Instead of checking all pairs, you maintain a **deque of candidate points** that could produce the maximum value.
+* Remove points from the deque if their `xi` is more than `k` away from the current `xj`.
+* Always keep the **largest `(yi - xi)`** available for the current `j`.
+
+This reduces the inner loop from iterating over all `j` to only considering valid candidates in the deque → **O(n) time**.
+
+---
 
 ## Usage
 

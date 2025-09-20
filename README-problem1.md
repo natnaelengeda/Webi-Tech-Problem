@@ -41,6 +41,23 @@ Final output:
 - The standard optimized solution uses **prefix and suffix products**, which achieves **O(n) time complexity** without division.
 
 ---
+### Optimization Considered
+
+This problem can be optimized from **O(n²)** to **O(n)** time complexity by using **prefix and suffix products**:
+
+* Instead of multiplying all elements except the current one in a nested loop, we can:
+  1. Compute a **prefix product** for each index `i` (product of all elements before `i`).
+  2. Compute a **suffix product** for each index `i` (product of all elements after `i`).
+  3. Multiply `prefix[i] * suffix[i]` to get the final product except self.
+
+* This approach avoids nested loops and works for large arrays efficiently.
+* **Space complexity:** O(1) extra (excluding the output array), since we can reuse the output array to store prefix products and combine with suffix products.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1) extra
+
+
+---
 
 ## Time Complexity
 
